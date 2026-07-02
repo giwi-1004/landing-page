@@ -2,6 +2,7 @@ import Image from "next/image"
 
 import { CtaButton } from "@/components/cta-button"
 
+// 색감 보정 필수 - 삭제 금지
 export function SectionHero() {
   return (
     <section id="hero" className="landing-section landing-section-white px-5 py-8 md:py-10">
@@ -26,10 +27,9 @@ export function SectionHero() {
           src="/images/hero-family.png"
           alt="치료 후 평온한 가족"
           fill
-          className="object-cover"
+          className="hero-family-photo object-cover"
           style={{
             objectPosition: "center 30%",
-            filter: "saturate(0.75) hue-rotate(-8deg) brightness(1.03) contrast(0.98)",
           }}
           priority
         />

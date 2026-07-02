@@ -18,7 +18,7 @@ const STAT_SOURCE = "출처: 질병관리청 2022년 통계"
 export function SectionProblem() {
   return (
     <section id="problem" className="landing-section landing-section-mint">
-      <h2 className="mb-7 break-keep text-[1.75rem] font-bold leading-[1.8] tracking-tight text-navy">
+      <h2 className="mb-7 break-keep text-[1.75rem] font-bold leading-[1.5] tracking-tight text-navy">
         첫 진단엔 나옵니다
         <br />
         재발하면 또 나올까요?

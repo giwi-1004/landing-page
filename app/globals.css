@@ -106,6 +106,10 @@
     @apply text-xs leading-[1.8] text-[#888888];
   }
 
+  .hero-family-photo {
+    filter: saturate(0.75) hue-rotate(-8deg) brightness(1.03) contrast(0.98);
+  }
+
   .landing-card {
     @apply rounded-2xl border-2 border-[#e2e8f0] bg-surface p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)];
   }

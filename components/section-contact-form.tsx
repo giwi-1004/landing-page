@@ -163,8 +163,8 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         </div>
 
         <div className="mb-4 rounded-xl border-2 border-[#e2e8f0] bg-surface px-3 py-4">
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
-            <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 pr-2">
+          <div className="flex flex-col gap-2">
+            <label className="flex min-w-0 cursor-pointer items-center gap-2">
               <Checkbox
                 id="privacy-consent"
                 checked={privacyAgreed}
@@ -180,7 +180,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
             </label>
             <button
               type="button"
-              className="ml-auto shrink-0 border-0 bg-transparent p-1 text-[12px] font-medium text-slate-700 underline"
+              className="ml-8 w-fit border-0 bg-transparent p-0 text-[12px] font-medium text-slate-700 underline"
               onClick={() => setPrivacyDetailOpen((open) => !open)}
             >
               내용 보기

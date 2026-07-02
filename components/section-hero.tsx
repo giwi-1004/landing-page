@@ -36,7 +36,7 @@ export function SectionHero() {
       </div>
 
       <CtaButton variant="hero" section="히어로" className="mt-4">
-        지금 확인하기
+        내 보험 확인해보기
       </CtaButton>
     </section>
   )

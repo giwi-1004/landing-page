@@ -48,9 +48,9 @@ export function SectionPlan() {
         <p className="mt-[10px] break-keep text-[13px] font-bold leading-relaxed text-[#0F3460]">
           지금 확인하지 않으면 재발 후에 알게 됩니다.
         </p>
-        <p className="mt-4 break-keep text-[12px] leading-relaxed text-[#888888]">모아둔 재산이 치료비로 사라지고</p>
+        <p className="mt-4 break-keep text-[12px] leading-relaxed text-[#888888]">치료는 끝나도</p>
         <p className="mt-1 break-keep text-[15px] font-extrabold leading-normal text-[#0F3460]">
-          가장의 자리를 잃게 됩니다.
+          삶은 계속됩니다.
         </p>
 
         <div className="mt-5">

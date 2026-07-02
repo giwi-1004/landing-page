@@ -42,7 +42,7 @@ export function SectionGuide() {
       <ReviewCarousel />
 
       <CtaButton variant="hero" section="가이드">
-        지금 확인하기
+        내 보험 확인해보기
       </CtaButton>
     </section>
   )

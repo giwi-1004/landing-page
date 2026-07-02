@@ -68,7 +68,7 @@ export function SectionProblem() {
       </div>
 
       <CtaButton variant="hero" section="문제인식">
-        지금 확인하기
+        내 보험 확인해보기
       </CtaButton>
     </section>
   )

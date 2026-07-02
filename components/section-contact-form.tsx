@@ -175,7 +175,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
                 className="size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
               />
               <span className="text-[13px] font-semibold leading-none text-slate-900">
-                [필수] 개인정보 수집 및 이용에 동의합니다
+                [필수] 개인정보 수집 및 이용 동의
               </span>
             </label>
             <button

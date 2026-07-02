@@ -68,8 +68,8 @@ function CredentialCard({ card, onZoom }: CredentialCardProps) {
     <div
       className={
         isCertificate
-          ? "relative flex h-[240px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-[#d1f5e8] bg-white p-2 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(29,158,117,0.18)]"
-          : "flex h-[240px] w-full flex-col items-center justify-between rounded-xl border-2 border-[#d1f5e8] bg-white p-2"
+          ? "relative flex h-[240px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-2 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(15,52,96,0.1)]"
+          : "flex h-[240px] w-full flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-2"
       }
       onClick={isCertificate ? () => onZoom?.(card.src) : undefined}
       onKeyDown={
@@ -103,7 +103,7 @@ function CredentialCard({ card, onZoom }: CredentialCardProps) {
 
       {isCertificate ? (
         <span
-          className="pointer-events-none absolute bottom-10 right-2 flex size-6 items-center justify-center rounded-full bg-white p-1 text-sm text-[#1D9E75]"
+          className="pointer-events-none absolute bottom-10 right-2 flex size-6 items-center justify-center rounded-full bg-white p-1 text-sm text-[#0F3460]"
           aria-hidden
         >
           🔍

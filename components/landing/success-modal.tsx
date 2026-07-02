@@ -18,8 +18,8 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
       />
 
       <div className="relative w-full max-w-[calc(100vw-32px)] rounded-2xl border-2 border-[#e2e8f0] bg-surface px-5 py-7 text-center shadow-xl sm:max-w-[440px]">
-        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#d1f5e8]">
-          <span className="text-2xl font-bold text-[#1D9E75]" aria-hidden>
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#e2e8f0]">
+          <span className="text-2xl font-bold text-[#0F3460]" aria-hidden>
             ✓
           </span>
         </div>
@@ -34,7 +34,7 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
           <span className="font-bold">영업일 기준 24시간 내</span> 연락드립니다.
         </p>
 
-        <div className="mb-6 w-full rounded-xl border-2 border-[#d1f5e8] bg-[#fafffd] px-5 py-4 text-left">
+        <div className="mb-6 w-full rounded-xl border-2 border-[#e2e8f0] bg-[#f8f9fa] px-5 py-4 text-left">
           <p className="text-sm font-bold text-slate-900">상담 가능 시간</p>
           <p className="mt-2 text-base font-bold text-slate-900">평일 오전 9시 ~ 오후 6시</p>
           <p className="mt-2 text-sm font-medium leading-relaxed text-slate-900">

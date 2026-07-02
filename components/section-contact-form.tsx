@@ -101,7 +101,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
   }
 
   const inputClassName =
-    "landing-form-input h-auto min-h-[52px] w-full rounded-2xl bg-surface py-3 text-base md:text-base leading-normal text-slate-900 placeholder:text-base placeholder:leading-normal placeholder:text-gray-500 focus-visible:border-[#1d9e75] focus-visible:ring-0"
+    "landing-form-input h-auto min-h-[52px] w-full rounded-2xl bg-surface py-3 text-base md:text-base leading-normal text-slate-900 placeholder:text-base placeholder:leading-normal placeholder:text-gray-500 focus-visible:border-[#0f3460] focus-visible:ring-0"
 
   return (
     <section id="contact-form" className="landing-section landing-section-white">
@@ -172,7 +172,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
                   setFormError("")
                   setPrivacyAgreed(v === true)
                 }}
-                className="mt-0.5 size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#1d9e75] data-[state=checked]:bg-[#1d9e75] [&_svg]:size-4"
+                className="mt-0.5 size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
               />
               <span className="break-keep text-base font-semibold leading-snug text-slate-900">
                 [필수] 개인정보 수집 및 이용에 동의합니다
@@ -189,7 +189,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
 
           <div
             className={cn(
-              "mt-3 whitespace-pre-line rounded-lg border-2 border-[#d1f5e8] bg-[#fafffd] p-3 text-xs leading-relaxed text-[#0F3460]/80",
+              "mt-3 whitespace-pre-line rounded-lg border-2 border-[#e2e8f0] bg-[#f8f9fa] p-3 text-xs leading-relaxed text-[#0F3460]/80",
               !privacyDetailOpen && "hidden",
             )}
           >

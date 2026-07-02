@@ -31,7 +31,7 @@ export function SectionPlan() {
         {PROMISES.map((promise) => (
           <span
             key={promise}
-            className="rounded-[99px] border border-[#1D9E75] bg-white px-[14px] py-[6px] text-[11px] font-semibold text-[#1D9E75]"
+            className="rounded-[99px] border border-[#0F3460] bg-white px-[14px] py-[6px] text-[11px] font-semibold text-[#0F3460]"
           >
             {promise}
           </span>
@@ -49,7 +49,7 @@ export function SectionPlan() {
           지금 확인하지 않으면 재발 후에 알게 됩니다.
         </p>
         <p className="mt-4 break-keep text-[12px] leading-relaxed text-[#888888]">모아둔 재산이 치료비로 사라지고</p>
-        <p className="mt-1 break-keep text-[15px] font-extrabold leading-normal text-[#1D9E75]">
+        <p className="mt-1 break-keep text-[15px] font-extrabold leading-normal text-[#0F3460]">
           가장의 자리를 잃게 됩니다.
         </p>
 

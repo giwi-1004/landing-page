@@ -28,9 +28,9 @@ export function CarouselDots({ count, current, onSelect, ariaLabel }: CarouselDo
           aria-selected={index === current}
           aria-label={`${ariaLabel} ${index + 1}`}
           className="size-2 rounded-full p-0 transition-colors duration-300"
-          style={{
-            backgroundColor: index === current ? "#1D9E75" : "#d1f5e8",
-          }}
+            style={{
+              backgroundColor: index === current ? "#0F3460" : "#e2e8f0",
+            }}
           onClick={() => onSelect(index)}
         />
       ))}

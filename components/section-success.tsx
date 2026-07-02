@@ -17,8 +17,8 @@ const COMPARE_ITEMS = [
     imageSrc: "/images/with-insurance.png",
     imageAlt: "보험 있을 때 따뜻하게 대하는 가족",
     accent: true,
-    labelClassName: "text-[#1D9E75]",
-    cardClassName: "border-[#1D9E75] shadow-[0_4px_16px_rgba(29,158,117,0.18)]",
+    labelClassName: "text-[#0F3460]",
+    cardClassName: "border-[#0F3460] shadow-[0_4px_16px_rgba(15,52,96,0.12)]",
   },
 ] as const
 

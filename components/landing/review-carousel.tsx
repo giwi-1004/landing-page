@@ -28,7 +28,7 @@ export function ReviewCarousel() {
         const review = REVIEWS[current]
 
         return (
-          <div className="rounded-xl border-2 border-[#d1f5e8] bg-[#fafffd] p-5">
+          <div className="rounded-xl border-2 border-[#e2e8f0] bg-[#f8f9fa] p-5">
             <p className="text-sm font-semibold text-[#0F3460]">{review.author}</p>
             <p className="mt-3 break-keep text-sm leading-relaxed text-[#0F3460]/80">
               {review.text}

@@ -45,11 +45,11 @@ export function SectionProblem() {
             <p className="mt-2 break-keep text-xs leading-[1.8]">재발 시 보장 없음</p>
           </div>
 
-          <div className="relative scale-[1.03] rounded-2xl border-2 border-[#1D9E75] bg-white p-5 pt-6 text-center text-[#0F3460] shadow-[0_4px_16px_rgba(29,158,117,0.2)]">
-            <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-[99px] bg-[#1D9E75] px-2 py-0.5 text-[10px] font-semibold text-white">
+          <div className="relative scale-[1.03] rounded-2xl border-2 border-[#0F3460] bg-white p-5 pt-6 text-center text-[#0F3460] shadow-[0_4px_16px_rgba(15,52,96,0.12)]">
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-[99px] bg-[#0F3460] px-2 py-0.5 text-[10px] font-semibold text-white">
               추천
             </span>
-            <p className="mb-4 text-xs font-semibold tracking-wide text-[#1D9E75]">
+            <p className="mb-4 text-xs font-semibold tracking-wide text-[#0F3460]">
               순환계 통합치료비
             </p>
             <p className="break-keep text-base font-bold leading-normal">매년 반복 지급</p>
@@ -64,7 +64,7 @@ export function SectionProblem() {
 
       <div className="mb-10 rounded-xl bg-[#0F3460] p-5 text-center">
         <p className="text-[13px] text-[#AAAAAA]">재발 후 가족 눈치를 봐야 한다면</p>
-        <p className="mt-2 text-lg font-extrabold leading-normal text-[#1D9E75]">이 보험은 필요없습니다</p>
+        <p className="mt-2 text-lg font-extrabold leading-normal text-[#0F3460]">이 보험은 필요없습니다</p>
       </div>
 
       <CtaButton variant="hero" section="문제인식">

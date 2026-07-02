@@ -5,14 +5,14 @@ import { CtaButton } from "@/components/cta-button"
 export function SectionHero() {
   return (
     <section id="hero" className="landing-section landing-section-white px-5 py-8 md:py-10">
-      <p className="mb-3 inline-block rounded-full border-2 border-[#d1f5e8] bg-[#fafffd] px-4 py-1.5 text-xs font-medium tracking-wide text-[#0F3460]">
+      <p className="mb-3 inline-block rounded-full border-2 border-[#e2e8f0] bg-[#f8f9fa] px-4 py-1.5 text-xs font-medium tracking-wide text-[#0F3460]">
         뇌·심장 순환계 주요치료비
       </p>
 
       <h1 className="landing-hero-title mb-3 break-keep">
         첫 진단에도, 재발을 해도
         <br />
-        <span className="text-[#1D9E75]">돈 걱정 없이</span>
+        <span className="text-[#0F3460]">돈 걱정 없이</span>
         <br />
         치료에만 집중하세요
       </h1>

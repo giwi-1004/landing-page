@@ -9,10 +9,10 @@
   --color-brand-green: #1d9e75;
   --color-brand-green-soft: #d1f5e8;
   --color-border-muted: #e2e8f0;
-  --color-royal: #1d9e75;
-  --color-royal-soft: #17825f;
+  --color-royal: #0f3460;
+  --color-royal-soft: #1a4a7a;
   --color-sky: #e2e8f0;
-  --color-mint: #d1f5e8;
+  --color-mint: #f8f9fa;
   --color-surface: #ffffff;
   --navy: #0f3460;
   --navy-mid: #1a4a7a;
@@ -22,19 +22,19 @@
   --card-foreground: #0f3460;
   --popover: #ffffff;
   --popover-foreground: #0f3460;
-  --primary: #1d9e75;
+  --primary: #0f3460;
   --primary-foreground: #ffffff;
-  --secondary: #d1f5e8;
+  --secondary: #f8f9fa;
   --secondary-foreground: #0f3460;
-  --muted: #d1f5e8;
+  --muted: #f8f9fa;
   --muted-foreground: #0f3460;
-  --accent: #1d9e75;
+  --accent: #0f3460;
   --accent-foreground: #ffffff;
   --destructive: #0f3460;
   --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #1d9e75;
+  --ring: #0f3460;
   --radius: 0.875rem;
 }
 
@@ -46,10 +46,10 @@
   --color-brand-green: #1d9e75;
   --color-brand-green-soft: #d1f5e8;
   --color-border-muted: #e2e8f0;
-  --color-royal: #1d9e75;
-  --color-royal-soft: #17825f;
+  --color-royal: #0f3460;
+  --color-royal-soft: #1a4a7a;
   --color-sky: #e2e8f0;
-  --color-mint: #d1f5e8;
+  --color-mint: #f8f9fa;
   --color-surface: #ffffff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -111,7 +111,7 @@
   }
 
   .landing-stat-value {
-    @apply text-[2rem] font-extrabold leading-none tracking-tight text-[#1d9e75];
+    @apply text-[2rem] font-extrabold leading-none tracking-tight text-[#0f3460];
   }
 
   .landing-compare-grid {
@@ -127,7 +127,7 @@
   }
 
   .landing-compare-card-accent {
-    @apply border-[#1d9e75] shadow-[0_4px_16px_rgba(29,158,117,0.18)];
+    @apply border-[#0f3460] shadow-[0_4px_16px_rgba(15,52,96,0.12)];
   }
 
   .landing-banner {
@@ -239,10 +239,10 @@
   }
 
   .landing-compare-card-accent {
-    border-color: #1d9e75;
+    border-color: #0f3460;
     border-width: 2px;
     background-color: #ffffff;
-    box-shadow: 0 4px 16px rgba(29, 158, 117, 0.18);
+    box-shadow: 0 4px 16px rgba(15, 52, 96, 0.12);
   }
 
   .landing-stat-grid .landing-card {
@@ -276,8 +276,8 @@
   }
 
   .landing-form-input:focus-visible {
-    border-color: #1d9e75;
-    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+    border-color: #0f3460;
+    box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.12);
   }
 
   .landing-cta-primary,

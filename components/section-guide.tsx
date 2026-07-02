@@ -7,7 +7,7 @@ import { CtaButton } from "@/components/cta-button"
 export function SectionGuide() {
   return (
     <section id="guide" className="landing-section landing-section-white">
-      <div className="mb-10 flex items-center gap-4">
+      <div className="mb-6 flex items-center gap-4">
         <Image
           src="/images/profile.png"
           alt="이영대 지점장"
@@ -21,7 +21,7 @@ export function SectionGuide() {
         </div>
       </div>
 
-      <div className="mb-10 rounded-xl bg-[#0F3460] p-5">
+      <div className="mb-6 rounded-xl bg-[#0F3460] p-5">
         <p className="break-keep text-[15px] font-bold leading-relaxed text-white/90">
           설계사에게 연락하기 부담스러우셨죠?
         </p>

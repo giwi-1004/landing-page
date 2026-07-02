@@ -27,7 +27,10 @@ export function SectionHero() {
           alt="치료 후 평온한 가족"
           fill
           className="object-cover"
-          style={{ objectPosition: "center 30%" }}
+          style={{
+            objectPosition: "center 30%",
+            filter: "saturate(0.9) hue-rotate(-5deg) brightness(1.02)",
+          }}
           priority
         />
       </div>

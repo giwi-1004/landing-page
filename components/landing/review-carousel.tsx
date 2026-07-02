@@ -22,7 +22,7 @@ export function ReviewCarousel() {
     <LandingSwipeCarousel
       slideCount={REVIEWS.length}
       ariaLabel="후기 슬라이드"
-      className="mb-10"
+      className="mb-6"
     >
       {(current) => {
         const review = REVIEWS[current]

@@ -162,9 +162,9 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
           />
         </div>
 
-        <div className="mb-5 rounded-xl border-2 border-[#e2e8f0] bg-surface p-4">
-          <div className="flex items-start gap-3">
-            <label className="flex min-w-0 flex-1 cursor-pointer items-start gap-3">
+        <div className="mb-5 rounded-xl border-2 border-[#e2e8f0] bg-surface px-3 py-4">
+          <div className="flex items-center gap-2">
+            <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2">
               <Checkbox
                 id="privacy-consent"
                 checked={privacyAgreed}
@@ -172,15 +172,15 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
                   setFormError("")
                   setPrivacyAgreed(v === true)
                 }}
-                className="mt-0.5 size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
+                className="size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
               />
-              <span className="break-keep text-base font-semibold leading-snug text-slate-900">
+              <span className="whitespace-nowrap text-[13px] font-semibold leading-none text-slate-900">
                 [필수] 개인정보 수집 및 이용에 동의합니다
               </span>
             </label>
             <button
               type="button"
-              className="shrink-0 border-0 bg-transparent p-1 text-sm font-medium text-slate-700 underline"
+              className="shrink-0 border-0 bg-transparent p-1 text-[12px] font-medium text-slate-700 underline"
               onClick={() => setPrivacyDetailOpen((open) => !open)}
             >
               내용 보기

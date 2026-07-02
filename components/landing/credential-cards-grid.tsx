@@ -149,7 +149,7 @@ export function CredentialCardsGrid() {
         key={itemsPerSlide}
         slideCount={slides.length}
         ariaLabel="자격증 슬라이드"
-        className="mb-10"
+        className="mb-6"
         paused={Boolean(selectedImage)}
       >
         {(current) => (

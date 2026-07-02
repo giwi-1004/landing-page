@@ -13,7 +13,7 @@ const STAT_CARDS = [
   },
 ] as const
 
-const STAT_SOURCE = "출처: 질병관리청 2022년 발생통계"
+const STAT_SOURCE = "출처: 질병관리청 2022년 통계"
 
 export function SectionProblem() {
   return (

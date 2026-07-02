@@ -98,7 +98,7 @@
   }
 
   .landing-hero-title {
-    @apply break-keep text-[1.875rem] font-bold leading-[1.8] tracking-tight text-navy;
+    @apply break-keep text-[1.875rem] font-bold leading-[1.45] tracking-tight text-navy;
   }
 
   .landing-subtext,
@@ -198,7 +198,7 @@
   .landing-hero-title {
     font-size: 1.5rem;
     margin-bottom: 3.75rem;
-    line-height: 1.8;
+    line-height: 1.45;
   }
 
   #application-form h2,

@@ -68,8 +68,8 @@ function CredentialCard({ card, onZoom }: CredentialCardProps) {
     <div
       className={
         isCertificate
-          ? "relative flex h-[240px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-2 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(15,52,96,0.1)]"
-          : "flex h-[240px] w-full flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-2"
+          ? "relative flex h-[212px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-1.5 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(15,52,96,0.1)]"
+          : "flex h-[212px] w-full flex-col items-center justify-between rounded-xl border-2 border-[#e2e8f0] bg-white p-1.5"
       }
       onClick={isCertificate ? () => onZoom?.(card.src) : undefined}
       onKeyDown={
@@ -86,13 +86,13 @@ function CredentialCard({ card, onZoom }: CredentialCardProps) {
       tabIndex={isCertificate ? 0 : undefined}
       aria-label={isCertificate ? `${card.label} 확대 보기` : undefined}
     >
-      <div className="h-[180px] w-full shrink-0 overflow-hidden rounded-lg bg-white">
+      <div className="h-[152px] w-full shrink-0 overflow-hidden rounded-lg bg-white">
         <Image
           src={card.src}
           alt={card.alt}
           width={200}
-          height={180}
-          className="block h-[180px] w-full max-h-[180px] min-h-[180px]"
+          height={152}
+          className="block h-[152px] w-full max-h-[152px] min-h-[152px]"
           style={{
             objectFit: isCertificate ? "contain" : "cover",
             objectPosition: isCertificate ? "center" : "center top",
@@ -110,7 +110,7 @@ function CredentialCard({ card, onZoom }: CredentialCardProps) {
         </span>
       ) : null}
 
-      <p className="shrink-0 break-keep px-1 pt-2 text-center text-xs font-bold leading-normal text-[#0F3460]">
+      <p className="shrink-0 break-keep px-1 pt-1.5 text-center text-[11px] font-bold leading-normal text-[#0F3460]">
         {card.label}
       </p>
     </div>

@@ -21,18 +21,18 @@ export function SectionGuide() {
         </div>
       </div>
 
-      <div className="mb-10 rounded-xl bg-[#0F3460] p-6">
-        <p className="break-keep text-base font-bold leading-relaxed text-white/90">
+      <div className="mb-10 rounded-xl bg-[#0F3460] p-5">
+        <p className="break-keep text-[15px] font-bold leading-relaxed text-white/90">
           설계사에게 연락하기 부담스러우셨죠?
         </p>
-        <p className="text-sm font-normal leading-relaxed text-white">
+        <p className="text-[13px] font-normal leading-relaxed text-white">
           저도 압니다. 가입 권유만 하니까요.
         </p>
-        <div className="h-4" aria-hidden />
-        <p className="text-sm font-bold leading-relaxed text-white">
+        <div className="h-3" aria-hidden />
+        <p className="break-keep text-[13px] font-bold leading-relaxed text-white">
           7년간 분석 먼저, 결정은 고객님이 하십니다.
         </p>
-        <p className="text-sm font-normal leading-relaxed text-white">
+        <p className="text-[13px] font-normal leading-relaxed text-white">
           빠진 보장, 함께 찾아드리겠습니다.
         </p>
       </div>

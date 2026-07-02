@@ -9,7 +9,7 @@ export function SectionHero() {
         뇌·심장 순환계 주요치료비
       </p>
 
-      <h1 className="landing-hero-title mb-3 break-keep">
+      <h1 className="landing-hero-title mb-1.5 break-keep">
         첫 진단에도, 재발을 해도
         <br />
         <span className="text-[#0F3460]">돈 걱정 없이</span>
@@ -17,7 +17,7 @@ export function SectionHero() {
         치료에만 집중하세요
       </h1>
 
-      <p className="mb-4 break-keep text-[15px] font-semibold leading-[1.8] text-[#0F3460]">
+      <p className="mb-2 break-keep text-[15px] font-semibold leading-[1.8] text-[#0F3460]">
         가지고 있는 보험으로 가능한지 확인해 드리겠습니다
       </p>
 

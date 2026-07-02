@@ -15,14 +15,14 @@ export function SectionPlan() {
     <section id="plan" className="landing-section landing-section-mint">
       <h2 className="mb-5 break-keep text-[22px] font-extrabold leading-[1.8] text-[#0F3460]">3단계면 충분합니다</h2>
 
-      <ol className="relative mb-6 flex items-start justify-between gap-3">
+      <ol className="relative mb-6 flex items-start justify-between gap-2">
         <div className="absolute left-[20px] right-[20px] top-5 border-t-2 border-dashed border-[#e2e8f0]" />
         {PLAN_STEPS.map((item) => (
-          <li key={item.step} className="relative z-10 flex flex-1 flex-col items-center text-center">
+          <li key={item.step} className="relative z-10 flex min-w-0 flex-1 flex-col items-center text-center">
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F3460] text-sm font-bold text-white">
               {item.step}
             </span>
-            <p className="mt-3 break-keep px-1 text-[13px] leading-normal text-[#0F3460]">{item.title}</p>
+            <p className="mt-3 whitespace-nowrap px-0.5 text-[11px] leading-normal text-[#0F3460]">{item.title}</p>
           </li>
         ))}
       </ol>

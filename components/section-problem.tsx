@@ -18,13 +18,13 @@ const STAT_SOURCE = "출처: 질병관리청 2022년 통계"
 export function SectionProblem() {
   return (
     <section id="problem" className="landing-section landing-section-mint">
-      <h2 className="landing-heading">
+      <h2 className="mb-7 break-keep text-[1.75rem] font-bold leading-[1.8] tracking-tight text-navy">
         첫 진단엔 나옵니다
         <br />
         재발하면 또 나올까요?
       </h2>
 
-      <div className="landing-stat-grid mb-10 flex gap-3">
+      <div className="landing-stat-grid mb-8 flex gap-3">
         {STAT_CARDS.map((card) => (
           <div key={card.label}>
             <div className="landing-card flex flex-col items-center py-4 text-center">
@@ -37,7 +37,7 @@ export function SectionProblem() {
         ))}
       </div>
 
-      <div className="landing-compare-wrap mb-10">
+      <div className="landing-compare-wrap mb-8">
         <div className="landing-compare-grid items-stretch">
           <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8f9fa] p-4 text-center text-[#888888] shadow-none">
             <p className="mb-3 text-[11px] font-semibold tracking-wide">기존 보험</p>

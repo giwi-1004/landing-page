@@ -29,13 +29,13 @@ export function SectionHero() {
           className="object-cover"
           style={{
             objectPosition: "center 30%",
-            filter: "saturate(0.9) hue-rotate(-5deg) brightness(1.02)",
+            filter: "saturate(0.75) hue-rotate(-8deg) brightness(1.03) contrast(0.98)",
           }}
           priority
         />
       </div>
 
-      <CtaButton variant="hero" section="히어로" className="mt-5">
+      <CtaButton variant="hero" section="히어로" className="mt-4">
         지금 확인하기
       </CtaButton>
     </section>

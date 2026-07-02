@@ -122,7 +122,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
       <p className="my-3 text-center text-[#AAAAAA]">또는</p>
 
       <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="mb-5">
+        <div className="mb-4">
           <label htmlFor="name" className="mb-2.5 block text-sm font-semibold text-navy">
             이름
           </label>
@@ -140,7 +140,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
           />
         </div>
 
-        <div className="mb-5">
+        <div className="mb-4">
           <label htmlFor="phone" className="mb-2.5 block text-sm font-semibold text-navy">
             전화번호
           </label>
@@ -162,9 +162,9 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
           />
         </div>
 
-        <div className="mb-5 rounded-xl border-2 border-[#e2e8f0] bg-surface px-3 py-4">
-          <div className="flex items-center gap-2">
-            <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2">
+        <div className="mb-4 rounded-xl border-2 border-[#e2e8f0] bg-surface px-3 py-4">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+            <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 pr-2">
               <Checkbox
                 id="privacy-consent"
                 checked={privacyAgreed}
@@ -174,13 +174,13 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
                 }}
                 className="size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
               />
-              <span className="whitespace-nowrap text-[13px] font-semibold leading-none text-slate-900">
+              <span className="text-[13px] font-semibold leading-none text-slate-900">
                 [필수] 개인정보 수집 및 이용에 동의합니다
               </span>
             </label>
             <button
               type="button"
-              className="shrink-0 border-0 bg-transparent p-1 text-[12px] font-medium text-slate-700 underline"
+              className="ml-auto shrink-0 border-0 bg-transparent p-1 text-[12px] font-medium text-slate-700 underline"
               onClick={() => setPrivacyDetailOpen((open) => !open)}
             >
               내용 보기

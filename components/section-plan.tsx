@@ -13,9 +13,9 @@ const PROMISES = ["가입 권유 없음", "비대면 상담 가능", "결정은 
 export function SectionPlan() {
   return (
     <section id="plan" className="landing-section landing-section-mint">
-      <h2 className="mb-5 break-keep text-[22px] font-extrabold leading-[1.8] text-[#0F3460]">3단계면 충분합니다</h2>
+      <h2 className="mb-4 break-keep text-[22px] font-extrabold leading-[1.8] text-[#0F3460]">3단계면 충분합니다</h2>
 
-      <ol className="relative mb-6 flex items-start justify-between gap-2">
+      <ol className="relative mb-4 flex items-start justify-between gap-2">
         <div className="absolute left-[20px] right-[20px] top-5 border-t-2 border-dashed border-[#e2e8f0]" />
         {PLAN_STEPS.map((item) => (
           <li key={item.step} className="relative z-10 flex min-w-0 flex-1 flex-col items-center text-center">
@@ -53,7 +53,7 @@ export function SectionPlan() {
           가장의 자리를 잃게 됩니다.
         </p>
 
-        <div className="mt-6">
+        <div className="mt-5">
           <CtaButton variant="hero" section="플랜손실">
             지금 확인하기
           </CtaButton>

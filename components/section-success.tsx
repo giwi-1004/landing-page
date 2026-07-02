@@ -25,7 +25,7 @@ const COMPARE_ITEMS = [
 export function SectionSuccess() {
   return (
     <section id="success" className="landing-section landing-section-white">
-      <h2 className="mb-10 text-center">
+      <h2 className="mb-8 text-center">
         <span className="block text-[17px] font-normal text-[#888888]">
           보험은 치료비 그 이상입니다.
         </span>
@@ -34,7 +34,7 @@ export function SectionSuccess() {
         </span>
       </h2>
 
-      <div className="landing-compare-wrap mb-10">
+      <div className="landing-compare-wrap mb-7">
         <div className="landing-compare-grid">
           {COMPARE_ITEMS.map((item) => (
             <div

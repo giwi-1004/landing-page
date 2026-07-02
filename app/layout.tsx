@@ -42,7 +42,7 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
-const META_PIXEL_ID = '2050356035883532'
+const META_PIXEL_ID = '3320336271481355'
 
 const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

@@ -50,7 +50,7 @@ npm run dev
 
 ## 분석
 
-- **Meta Pixel:** `2050356035883532`
+- **Meta Pixel:** `3320336271481355`
 - **GA4:** `G-ZH7ZX0FWGV`
 - **Vercel Analytics:** `app/layout.tsx`
 

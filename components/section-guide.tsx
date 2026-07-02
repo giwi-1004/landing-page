@@ -13,7 +13,7 @@ export function SectionGuide() {
           alt="이영대 지점장"
           width={56}
           height={56}
-          className="h-14 w-14 shrink-0 rounded-full border-2 border-sky object-cover"
+          className="h-14 w-14 shrink-0 rounded-full border-2 border-[#d1f5e8] object-cover"
         />
         <div>
           <p className="text-base font-bold text-navy">이영대 지점장</p>
@@ -21,8 +21,8 @@ export function SectionGuide() {
         </div>
       </div>
 
-      <div className="mb-10 rounded-xl bg-navy p-6">
-        <p className="text-base font-bold text-[#CECBF6]">
+      <div className="mb-10 rounded-xl bg-[#0F3460] p-6">
+        <p className="break-keep text-base font-bold leading-relaxed text-[#d1f5e8]">
           설계사에게 연락하기 부담스러우셨죠?
         </p>
         <p className="text-sm font-normal leading-relaxed text-white">
@@ -42,7 +42,7 @@ export function SectionGuide() {
       <ReviewCarousel />
 
       <CtaButton variant="hero" section="가이드">
-        무료로 확인하기
+        지금 확인하기
       </CtaButton>
     </section>
   )

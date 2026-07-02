@@ -9,8 +9,8 @@ const COMPARE_ITEMS = [
     imageSrc: "/images/without-insurance.png",
     imageAlt: "보험 없을 때 치료비 걱정으로 힘든 가족",
     accent: false,
-    labelClassName: "text-[#A32D2D]",
-    cardClassName: "border-[#F7C1C1]",
+    labelClassName: "text-[#0F3460]",
+    cardClassName: "border-[#e2e8f0]",
   },
   {
     label: "보험 있을 때",
@@ -55,7 +55,7 @@ export function SectionSuccess() {
               </div>
               <p
                 className={cn(
-                  "flex flex-1 items-center justify-center p-[10px] text-[13px] font-bold leading-snug",
+                  "flex flex-1 items-center justify-center break-keep px-3 py-3 text-[13px] font-bold leading-normal",
                   item.labelClassName,
                 )}
               >
@@ -68,7 +68,7 @@ export function SectionSuccess() {
 
       <div className="py-4 text-center">
         <p className="text-xs text-[#888888]">보험이 만들어주는 변화</p>
-        <p className="mt-1.5 text-base font-extrabold leading-snug text-[#0F3460]">
+        <p className="mt-1.5 break-keep text-base font-extrabold leading-normal text-[#0F3460]">
           짐이 되는 환자에서
           <br />
           끝까지 가족을 지키는 가장으로
@@ -76,7 +76,7 @@ export function SectionSuccess() {
       </div>
 
       <CtaButton variant="hero" section="성공">
-        지금 결정하기
+        지금 확인하기
       </CtaButton>
     </section>
   )

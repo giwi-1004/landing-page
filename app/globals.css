@@ -4,46 +4,52 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-navy: #293681;
-  --color-navy-soft: #344790;
-  --color-royal: #4274d9;
-  --color-royal-soft: #3665c4;
-  --color-sky: #95ccdd;
-  --color-mint: #d0e7e6;
+  --color-navy: #0f3460;
+  --color-navy-soft: #1a4a7a;
+  --color-brand-green: #1d9e75;
+  --color-brand-green-soft: #d1f5e8;
+  --color-border-muted: #e2e8f0;
+  --color-royal: #1d9e75;
+  --color-royal-soft: #17825f;
+  --color-sky: #e2e8f0;
+  --color-mint: #d1f5e8;
   --color-surface: #ffffff;
-  --navy: #293681;
-  --navy-mid: #344790;
+  --navy: #0f3460;
+  --navy-mid: #1a4a7a;
   --background: #ffffff;
-  --foreground: #293681;
+  --foreground: #0f3460;
   --card: #ffffff;
-  --card-foreground: #293681;
+  --card-foreground: #0f3460;
   --popover: #ffffff;
-  --popover-foreground: #293681;
-  --primary: #4274d9;
+  --popover-foreground: #0f3460;
+  --primary: #1d9e75;
   --primary-foreground: #ffffff;
-  --secondary: #d0e7e6;
-  --secondary-foreground: #293681;
-  --muted: #d0e7e6;
-  --muted-foreground: #293681;
-  --accent: #4274d9;
+  --secondary: #d1f5e8;
+  --secondary-foreground: #0f3460;
+  --muted: #d1f5e8;
+  --muted-foreground: #0f3460;
+  --accent: #1d9e75;
   --accent-foreground: #ffffff;
-  --destructive: #293681;
+  --destructive: #0f3460;
   --destructive-foreground: #ffffff;
-  --border: #95ccdd;
-  --input: #95ccdd;
-  --ring: #4274d9;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #1d9e75;
   --radius: 0.875rem;
 }
 
 @theme inline {
   --font-sans: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
-  --color-navy: #293681;
-  --color-navy-soft: #344790;
-  --color-royal: #4274d9;
-  --color-royal-soft: #3665c4;
-  --color-sky: #95ccdd;
-  --color-mint: #d0e7e6;
+  --color-navy: #0f3460;
+  --color-navy-soft: #1a4a7a;
+  --color-brand-green: #1d9e75;
+  --color-brand-green-soft: #d1f5e8;
+  --color-border-muted: #e2e8f0;
+  --color-royal: #1d9e75;
+  --color-royal-soft: #17825f;
+  --color-sky: #e2e8f0;
+  --color-mint: #d1f5e8;
   --color-surface: #ffffff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -92,7 +98,7 @@
   }
 
   .landing-hero-title {
-    @apply text-[1.875rem] font-bold leading-[1.8] tracking-tight text-navy;
+    @apply break-keep text-[1.875rem] font-bold leading-[1.8] tracking-tight text-navy;
   }
 
   .landing-subtext,
@@ -101,11 +107,11 @@
   }
 
   .landing-card {
-    @apply rounded-2xl border-2 border-sky bg-surface p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)];
+    @apply rounded-2xl border-2 border-[#e2e8f0] bg-surface p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)];
   }
 
   .landing-stat-value {
-    @apply text-[2rem] font-extrabold leading-none tracking-tight text-royal;
+    @apply text-[2rem] font-extrabold leading-none tracking-tight text-[#1d9e75];
   }
 
   .landing-compare-grid {
@@ -117,15 +123,15 @@
   }
 
   .landing-compare-card {
-    @apply flex flex-col rounded-2xl border-2 border-sky bg-surface p-5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)];
+    @apply flex flex-col rounded-2xl border-2 border-[#e2e8f0] bg-surface p-5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)];
   }
 
   .landing-compare-card-accent {
-    @apply border-royal shadow-[0_2px_12px_rgba(0,0,0,0.06),0_4px_16px_rgba(66,116,217,0.12)];
+    @apply border-[#1d9e75] shadow-[0_4px_16px_rgba(29,158,117,0.18)];
   }
 
   .landing-banner {
-    @apply rounded-2xl border-2 border-sky bg-surface px-6 py-7 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)];
+    @apply rounded-2xl border-2 border-[#e2e8f0] bg-surface px-6 py-7 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)];
   }
 
   .landing-cta-primary,
@@ -233,10 +239,10 @@
   }
 
   .landing-compare-card-accent {
-    border-color: #4274d9;
+    border-color: #1d9e75;
     border-width: 2px;
     background-color: #ffffff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(66, 116, 217, 0.12);
+    box-shadow: 0 4px 16px rgba(29, 158, 117, 0.18);
   }
 
   .landing-stat-grid .landing-card {
@@ -255,9 +261,9 @@
     border-radius: 16px;
     border-width: 2px;
     border-style: solid;
-    border-color: #6a9fb5;
+    border-color: #e2e8f0;
     color: #1a1a1a;
-    box-shadow: 0 1px 2px rgba(41, 54, 129, 0.06);
+    box-shadow: 0 1px 2px rgba(15, 52, 96, 0.04);
     box-sizing: border-box;
     vertical-align: middle;
   }
@@ -270,8 +276,8 @@
   }
 
   .landing-form-input:focus-visible {
-    border-color: #4274d9;
-    box-shadow: 0 0 0 3px rgba(66, 116, 217, 0.15);
+    border-color: #1d9e75;
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
   }
 
   .landing-cta-primary,

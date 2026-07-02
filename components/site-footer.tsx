@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="mt-2 bg-navy px-5 py-10">
+    <footer className="mt-2 bg-[#0F3460] px-5 py-10">
       <p className="mb-4 text-sm font-semibold text-white">
         티금융서비스 고양1센터 | 이영대 지점장
       </p>

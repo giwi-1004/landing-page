@@ -1,7 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+
+import { LandingSwipeCarousel } from "@/components/landing/landing-swipe-carousel"
 
 const CERT_CARDS = [
   {
@@ -30,8 +32,99 @@ const CERT_CARDS = [
   },
 ] as const
 
+type CertCard = (typeof CERT_CARDS)[number]
+
+function chunkCards<T>(items: readonly T[], size: number): T[][] {
+  const chunks: T[][] = []
+  for (let i = 0; i < items.length; i += size) {
+    chunks.push(items.slice(i, i + size) as T[])
+  }
+  return chunks
+}
+
+function useItemsPerSlide() {
+  const [itemsPerSlide, setItemsPerSlide] = useState(2)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 359px)")
+    const update = () => setItemsPerSlide(mediaQuery.matches ? 1 : 2)
+    update()
+    mediaQuery.addEventListener("change", update)
+    return () => mediaQuery.removeEventListener("change", update)
+  }, [])
+
+  return itemsPerSlide
+}
+
+interface CredentialCardProps {
+  card: CertCard
+  onZoom?: (src: string) => void
+}
+
+function CredentialCard({ card, onZoom }: CredentialCardProps) {
+  const isCertificate = card.variant === "certificate"
+
+  return (
+    <div
+      className={
+        isCertificate
+          ? "relative flex h-[240px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-[#d1f5e8] bg-white p-2 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(29,158,117,0.18)]"
+          : "flex h-[240px] w-full flex-col items-center justify-between rounded-xl border-2 border-[#d1f5e8] bg-white p-2"
+      }
+      onClick={isCertificate ? () => onZoom?.(card.src) : undefined}
+      onKeyDown={
+        isCertificate
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault()
+                onZoom?.(card.src)
+              }
+            }
+          : undefined
+      }
+      role={isCertificate ? "button" : undefined}
+      tabIndex={isCertificate ? 0 : undefined}
+      aria-label={isCertificate ? `${card.label} 확대 보기` : undefined}
+    >
+      <div className="h-[180px] w-full shrink-0 overflow-hidden rounded-lg bg-white">
+        <Image
+          src={card.src}
+          alt={card.alt}
+          width={200}
+          height={180}
+          className="block h-[180px] w-full max-h-[180px] min-h-[180px]"
+          style={{
+            objectFit: isCertificate ? "contain" : "cover",
+            objectPosition: isCertificate ? "center" : "center top",
+            borderRadius: "8px",
+          }}
+        />
+      </div>
+
+      {isCertificate ? (
+        <span
+          className="pointer-events-none absolute bottom-10 right-2 flex size-6 items-center justify-center rounded-full bg-white p-1 text-sm text-[#1D9E75]"
+          aria-hidden
+        >
+          🔍
+        </span>
+      ) : null}
+
+      <p className="shrink-0 break-keep px-1 pt-2 text-center text-xs font-bold leading-normal text-[#0F3460]">
+        {card.label}
+      </p>
+    </div>
+  )
+}
+
 export function CredentialCardsGrid() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const itemsPerSlide = useItemsPerSlide()
+
+  const slides = useMemo(
+    () => chunkCards(CERT_CARDS, itemsPerSlide),
+    [itemsPerSlide],
+  )
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -52,64 +145,31 @@ export function CredentialCardsGrid() {
 
   return (
     <>
-      <div className="mb-10 grid grid-cols-2 gap-4">
-        {CERT_CARDS.map((card) => {
-          const isCertificate = card.variant === "certificate"
-
-          return (
-            <div
-              key={card.label}
-              className={
-                isCertificate
-                  ? "relative flex h-[240px] w-full cursor-pointer flex-col items-center justify-between rounded-xl border border-[#CECBF6] bg-white p-2 transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-[0_4px_16px_rgba(83,74,183,0.25)]"
-                  : "flex h-[240px] w-full flex-col items-center justify-between rounded-xl border border-[#CECBF6] bg-white p-2"
-              }
-              onClick={isCertificate ? () => setSelectedImage(card.src) : undefined}
-              onKeyDown={
-                isCertificate
-                  ? (e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault()
-                        setSelectedImage(card.src)
-                      }
-                    }
-                  : undefined
-              }
-              role={isCertificate ? "button" : undefined}
-              tabIndex={isCertificate ? 0 : undefined}
-              aria-label={isCertificate ? `${card.label} 확대 보기` : undefined}
-            >
-              <div className="h-[180px] w-full shrink-0 overflow-hidden rounded-lg bg-white">
-                <Image
-                  src={card.src}
-                  alt={card.alt}
-                  width={200}
-                  height={180}
-                  className="block h-[180px] w-full max-h-[180px] min-h-[180px]"
-                  style={{
-                    objectFit: isCertificate ? "contain" : "cover",
-                    objectPosition: isCertificate ? "center" : "center top",
-                    borderRadius: "8px",
-                  }}
-                />
-              </div>
-
-              {isCertificate ? (
-                <span
-                  className="pointer-events-none absolute bottom-10 right-2 flex size-6 items-center justify-center rounded-full bg-white p-1 text-sm text-[#534AB7]"
-                  aria-hidden
-                >
-                  🔍
-                </span>
-              ) : null}
-
-              <p className="shrink-0 pt-2 text-center text-xs font-bold text-[#534AB7]">
-                {card.label}
-              </p>
-            </div>
-          )
-        })}
-      </div>
+      <LandingSwipeCarousel
+        key={itemsPerSlide}
+        slideCount={slides.length}
+        ariaLabel="자격증 슬라이드"
+        className="mb-10"
+        paused={Boolean(selectedImage)}
+      >
+        {(current) => (
+          <div
+            className={
+              itemsPerSlide === 2
+                ? "grid grid-cols-2 gap-4"
+                : "grid grid-cols-1 gap-4"
+            }
+          >
+            {slides[current]?.map((card) => (
+              <CredentialCard
+                key={card.label}
+                card={card}
+                onZoom={setSelectedImage}
+              />
+            ))}
+          </div>
+        )}
+      </LandingSwipeCarousel>
 
       {selectedImage ? (
         <div

@@ -39,21 +39,21 @@ export function SectionProblem() {
 
       <div className="landing-compare-wrap mb-10">
         <div className="landing-compare-grid items-center">
-          <div className="rounded-2xl border border-[#E0E0E0] bg-[#F5F5F5] p-5 text-center text-[#999999] shadow-none">
+          <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8f9fa] p-5 text-center text-[#888888] shadow-none">
             <p className="mb-4 text-xs font-semibold tracking-wide">기존 보험</p>
-            <p className="text-base font-bold">1회만 지급</p>
-            <p className="mt-2 text-xs leading-[1.8]">재발 시 보장 없음</p>
+            <p className="break-keep text-base font-bold leading-normal">1회만 지급</p>
+            <p className="mt-2 break-keep text-xs leading-[1.8]">재발 시 보장 없음</p>
           </div>
 
-          <div className="relative scale-[1.03] rounded-2xl border-2 border-[#1D9E75] bg-white p-5 pt-6 text-center text-navy shadow-[0_4px_16px_rgba(29,158,117,0.2)]">
+          <div className="relative scale-[1.03] rounded-2xl border-2 border-[#1D9E75] bg-white p-5 pt-6 text-center text-[#0F3460] shadow-[0_4px_16px_rgba(29,158,117,0.2)]">
             <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-[99px] bg-[#1D9E75] px-2 py-0.5 text-[10px] font-semibold text-white">
               추천
             </span>
             <p className="mb-4 text-xs font-semibold tracking-wide text-[#1D9E75]">
               순환계 통합치료비
             </p>
-            <p className="text-base font-bold">매년 반복 지급</p>
-            <p className="mt-2 text-xs leading-[1.8] text-[#888888]">100세까지 치료받을 때마다</p>
+            <p className="break-keep text-base font-bold leading-normal">매년 반복 지급</p>
+            <p className="mt-2 break-keep text-xs leading-[1.8] text-[#888888]">100세까지 치료받을 때마다</p>
           </div>
         </div>
       </div>
@@ -64,11 +64,11 @@ export function SectionProblem() {
 
       <div className="mb-10 rounded-xl bg-[#0F3460] p-5 text-center">
         <p className="text-[13px] text-[#AAAAAA]">재발 후 가족 눈치를 봐야 한다면</p>
-        <p className="mt-2 text-lg font-extrabold text-[#5DCAA5]">이 보험은 필요없습니다</p>
+        <p className="mt-2 text-lg font-extrabold leading-normal text-[#1D9E75]">이 보험은 필요없습니다</p>
       </div>
 
       <CtaButton variant="hero" section="문제인식">
-        내 보험 확인하기
+        지금 확인하기
       </CtaButton>
     </section>
   )

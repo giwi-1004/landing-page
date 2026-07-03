@@ -1,4 +1,8 @@
-export const META_PIXEL_ID = "3320336271481355"
+"use client"
+
+import { META_PIXEL_ID } from "@/lib/meta-pixel-id"
+
+export { META_PIXEL_ID }
 
 export type MetaPixelUserData = {
   fn?: string
@@ -24,10 +28,7 @@ function createLeadEventId(): string {
   return `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`
 }
 
-/**
- * Meta Pixel Lead 이벤트. 폼 제출 성공 시 userData(fn, ph)로 init 재호출 후
- * fbq('track', 'Lead', {}, { eventID }) 전송. Meta가 PII 해싱을 처리한다.
- */
+// 폼 제출 성공 시 userData(fn, ph)로 init 재호출 후 Lead 전송. Meta가 PII 해싱 처리.
 export function trackMetaLead(options?: {
   userData?: MetaPixelUserData
   source?: string
@@ -52,8 +53,8 @@ export function trackMetaLead(options?: {
 
   window.fbq("track", "Lead", {}, { eventID })
 
-  // 완료 후 제거 예정 — 개발자도구 확인용
-  console.log("[Meta Pixel] Lead", {
+  // TODO: remove after verification - devtools debug log
+  console.log("[meta-pixel] lead tracked", {
     eventID,
     userData: userData ?? null,
     source: options?.source ?? null,

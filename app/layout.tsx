@@ -3,7 +3,7 @@ import { Noto_Sans_KR } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 
-import { META_PIXEL_ID } from '@/lib/meta-pixel'
+import { META_PIXEL_ID } from '@/lib/meta-pixel-id'
 
 import './globals.css'
 
@@ -73,7 +73,7 @@ export default function RootLayout({
       <body
         className={`${notoSansKR.variable} min-h-dvh overflow-x-hidden font-sans antialiased`}
       >
-        <Script id="meta-pixel" strategy="afterInteractive">
+        <Script id="facebook-pixel-init" strategy="afterInteractive">
           {META_PIXEL_SCRIPT}
         </Script>
         <noscript>

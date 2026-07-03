@@ -3,7 +3,7 @@ import { Noto_Sans_KR } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 
-import { META_PIXEL_ID } from '@/lib/meta-pixel-id'
+import { META_PIXEL_ID } from '@/lib/fbPixelId'
 
 import './globals.css'
 
@@ -45,16 +45,18 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
-const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${META_PIXEL_ID}');
-fbq('track', 'PageView');`
+const META_PIXEL_SCRIPT =
+  "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?" +
+  "n.callMethod.apply(n,arguments):n.queue.push(arguments)};" +
+  "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';" +
+  "n.queue=[];t=b.createElement(e);t.async=!0;" +
+  "t.src=v;s=b.getElementsByTagName(e)[0];" +
+  "s.parentNode.insertBefore(t,s)}(window,document,'script'," +
+  "'https://connect.facebook.net/en_US/fbevents.js');" +
+  "fbq('init','" +
+  META_PIXEL_ID +
+  "');" +
+  "fbq('track','PageView');"
 
 const GA4_MEASUREMENT_ID = 'G-ZH7ZX0FWGV'
 
@@ -73,9 +75,11 @@ export default function RootLayout({
       <body
         className={`${notoSansKR.variable} min-h-dvh overflow-x-hidden font-sans antialiased`}
       >
-        <Script id="facebook-pixel-init" strategy="afterInteractive">
-          {META_PIXEL_SCRIPT}
-        </Script>
+        <Script
+          id="fbPixelInit"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: META_PIXEL_SCRIPT }}
+        />
         <noscript>
           <img
             height={1}

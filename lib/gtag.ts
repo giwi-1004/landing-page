@@ -18,8 +18,11 @@ function sendGtagEvent(eventName: string, params?: GtagEventParams) {
   window.gtag("event", eventName, params)
 }
 
-export function trackSectionView(sectionName: string) {
-  sendGtagEvent("section_view", { section_name: sectionName })
+export function trackSectionView(sectionName: string, sectionOrder: number) {
+  sendGtagEvent("section_view", {
+    section_name: sectionName,
+    section_order: sectionOrder,
+  })
 }
 
 export function trackFormSubmit(formName: string) {

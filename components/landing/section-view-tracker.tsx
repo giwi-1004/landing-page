@@ -5,12 +5,12 @@ import { useEffect, useRef } from "react"
 import { trackSectionView } from "@/lib/gtag"
 
 const LANDING_SECTIONS = [
-  { targetId: "hero", sectionName: "히어로" },
-  { targetId: "problem", sectionName: "문제" },
-  { targetId: "guide", sectionName: "가이드" },
-  { targetId: "plan", sectionName: "계획" },
-  { targetId: "success", sectionName: "성공" },
-  { targetId: "contact-form", sectionName: "폼" },
+  { targetId: "hero", sectionName: "히어로", sectionOrder: 1 },
+  { targetId: "problem", sectionName: "문제", sectionOrder: 2 },
+  { targetId: "guide", sectionName: "가이드", sectionOrder: 3 },
+  { targetId: "plan", sectionName: "계획", sectionOrder: 4 },
+  { targetId: "success", sectionName: "성공", sectionOrder: 5 },
+  { targetId: "contact-form", sectionName: "폼", sectionOrder: 6 },
 ] as const
 
 export function SectionViewTracker() {
@@ -19,7 +19,7 @@ export function SectionViewTracker() {
   useEffect(() => {
     const observers: IntersectionObserver[] = []
 
-    for (const { targetId, sectionName } of LANDING_SECTIONS) {
+    for (const { targetId, sectionName, sectionOrder } of LANDING_SECTIONS) {
       const el = document.getElementById(targetId)
       if (!el) continue
 
@@ -30,7 +30,7 @@ export function SectionViewTracker() {
             if (trackedRef.current.has(sectionName)) continue
 
             trackedRef.current.add(sectionName)
-            trackSectionView(sectionName)
+            trackSectionView(sectionName, sectionOrder)
             observer.disconnect()
           }
         },

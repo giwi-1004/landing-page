@@ -3,6 +3,7 @@
 import { useState } from "react"
 
 import { SuccessModal } from "@/components/landing/success-modal"
+import { SectionViewTracker } from "@/components/landing/section-view-tracker"
 import { SectionContactForm } from "@/components/section-contact-form"
 import { SectionGuide } from "@/components/section-guide"
 import { SectionHero } from "@/components/section-hero"
@@ -16,6 +17,7 @@ export default function LandingPage() {
 
   return (
     <main className="landing-page mx-auto min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8F9FA] md:max-w-[480px]">
+      <SectionViewTracker />
       <SectionHero />
       <SectionProblem />
       <SectionGuide />

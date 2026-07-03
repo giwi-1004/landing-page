@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
+
+import { META_PIXEL_ID } from '@/lib/meta-pixel'
+
 import './globals.css'
 
 const notoSansKR = Noto_Sans_KR({
@@ -41,8 +44,6 @@ export const viewport: Viewport = {
   themeColor: '#293681',
   viewportFit: 'cover',
 }
-
-const META_PIXEL_ID = '3320336271481355'
 
 const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

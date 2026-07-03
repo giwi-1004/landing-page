@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { trackCtaClick, trackFormSubmit } from "@/lib/gtag"
+import { trackMetaLead } from "@/lib/meta-pixel"
 import { normalizeKoreanPhoneToDigits } from "@/lib/normalize-kr-phone"
 import { submitLandingLead } from "@/lib/submit-landing-lead"
 import { cn } from "@/lib/utils"
@@ -94,6 +95,10 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
       }
 
       trackFormSubmit(FORM_NAME)
+      trackMetaLead({
+        userData: { fn: name.trim(), ph: phoneDigits },
+        source: "form",
+      })
       onSubmit()
     } finally {
       setIsSubmitting(false)
@@ -113,7 +118,10 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         target="_blank"
         rel="noopener noreferrer"
         className="flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#FEE500] px-4 py-[14px] text-base font-bold text-[#3C1E1E] transition-opacity hover:opacity-90"
-        onClick={() => trackCtaClick("카카오 오픈채팅 상담", "신청폼")}
+        onClick={() => {
+          trackCtaClick("카카오 오픈채팅 상담", "신청폼")
+          trackMetaLead({ source: "kakao" })
+        }}
       >
         <span aria-hidden>💬</span>
         카카오 오픈채팅 상담

@@ -39,20 +39,13 @@ export function trackMetaLead(options?: {
   const eventID = createLeadEventId()
   const userData = options?.userData
 
-  if (userData) {
-    const matching: Record<string, string> = {}
-    if (userData.fn?.trim()) matching.fn = userData.fn.trim()
-    if (userData.ph?.trim()) matching.ph = userData.ph.trim()
-    if (userData.em?.trim()) matching.em = userData.em.trim()
+  const matchedParams: Record<string, string> = {}
+  if (userData?.fn?.trim()) matchedParams.fn = userData.fn.trim()
+  if (userData?.ph?.trim()) matchedParams.ph = userData.ph.trim()
+  if (userData?.em?.trim()) matchedParams.em = userData.em.trim()
 
-    if (Object.keys(matching).length > 0) {
-      window.fbq("init", META_PIXEL_ID, matching)
-    }
-  }
+  window.fbq("track", "Lead", matchedParams, { eventID })
 
-  window.fbq("track", "Lead", {}, { eventID })
-
-  // TODO: remove after verification - devtools debug log
   console.log("[fb-lead] tracked", {
     eventID,
     userData: userData ?? null,

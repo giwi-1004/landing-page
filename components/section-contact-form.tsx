@@ -133,13 +133,21 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
 
   const handleKakaoClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    trackCtaClick("카카오 오픈채팅 상담", "신청폼")
+    const link = e.currentTarget
+    if (link.dataset.kakaoSubmitting === "true") return
+    link.dataset.kakaoSubmitting = "true"
 
-    const leadEventId = createLeadEventId()
-    await submitKakaoLead(leadEventId).catch(() => null)
-    trackMetaLead({ eventID: leadEventId, source: "kakao" })
+    try {
+      trackCtaClick("카카오 오픈채팅 상담", "신청폼")
 
-    window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer")
+      const leadEventId = createLeadEventId()
+      await submitKakaoLead(leadEventId).catch(() => null)
+      trackMetaLead({ eventID: leadEventId, source: "kakao" })
+
+      window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer")
+    } finally {
+      link.dataset.kakaoSubmitting = "false"
+    }
   }
 
   const inputClassName =

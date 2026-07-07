@@ -5,6 +5,44 @@ import {
 
 export type SubmitLeadResult = { ok: true } | { ok: false; message: string }
 
+type LeadApiResponse = { ok?: unknown; message?: string } | null
+
+async function postLeadApi(body: Record<string, unknown>): Promise<SubmitLeadResult> {
+  try {
+    const res = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+
+    const data = (await res.json().catch(() => null)) as LeadApiResponse
+
+    if (res.status === 201 && data?.ok === true) {
+      return { ok: true }
+    }
+
+    return {
+      ok: false,
+      message: data?.message ?? "저장에 실패했습니다. 잠시 후 다시 시도해주세요.",
+    }
+  } catch {
+    return {
+      ok: false,
+      message: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+    }
+  }
+}
+
+/**
+ * 카카오 오픈채팅 클릭 시 서버에 리드 기록 (source: kakao) + CAPI
+ */
+export async function submitKakaoLead(metaEventId: string): Promise<SubmitLeadResult> {
+  return postLeadApi({
+    source: "kakao",
+    metaEventId,
+  })
+}
+
 /**
  * 서버 API(/api/leads)를 통해 Supabase consultations 테이블에 저장합니다.
  */
@@ -32,35 +70,11 @@ export async function submitLandingLead(
 
   const phoneStored = formatKoreanPhoneForStorage(phoneDigits)
 
-  try {
-    const res = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: trimmedName,
-        phone: phoneStored,
-        agreed: true,
-        ...(metaEventId ? { metaEventId } : {}),
-      }),
-    })
-
-    const data = (await res.json().catch(() => null)) as {
-      ok?: unknown
-      message?: string
-    } | null
-
-    if (res.status === 201 && data?.ok === true) {
-      return { ok: true }
-    }
-
-    return {
-      ok: false,
-      message: data?.message ?? "저장에 실패했습니다. 잠시 후 다시 시도해주세요.",
-    }
-  } catch {
-    return {
-      ok: false,
-      message: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
-    }
-  }
+  return postLeadApi({
+    name: trimmedName,
+    phone: phoneStored,
+    agreed: true,
+    source: "form",
+    ...(metaEventId ? { metaEventId } : {}),
+  })
 }

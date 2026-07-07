@@ -8,7 +8,7 @@ import { trackCtaClick, trackFormSubmit } from "@/lib/gtag"
 import { createLeadEventId } from "@/lib/meta/lead-event-id"
 import { trackMetaLead } from "@/lib/trackFbLead"
 import { normalizeKoreanPhoneToDigits } from "@/lib/normalize-kr-phone"
-import { submitLandingLead } from "@/lib/submit-landing-lead"
+import { submitKakaoLead, submitLandingLead } from "@/lib/submit-landing-lead"
 import { cn } from "@/lib/utils"
 
 const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/scS4vMoi"
@@ -131,6 +131,17 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
     }
   }
 
+  const handleKakaoClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    trackCtaClick("카카오 오픈채팅 상담", "신청폼")
+
+    const leadEventId = createLeadEventId()
+    await submitKakaoLead(leadEventId).catch(() => null)
+    trackMetaLead({ eventID: leadEventId, source: "kakao" })
+
+    window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer")
+  }
+
   const inputClassName =
     "landing-form-input h-auto min-h-[52px] w-full rounded-2xl bg-surface py-3 text-base md:text-base leading-normal text-slate-900 placeholder:text-base placeholder:leading-normal placeholder:text-gray-500 focus-visible:border-[#0f3460] focus-visible:ring-0"
 
@@ -153,10 +164,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         target="_blank"
         rel="noopener noreferrer"
         className="flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#FEE500] px-4 py-[14px] text-base font-bold text-[#3C1E1E] transition-opacity hover:opacity-90"
-        onClick={() => {
-          trackCtaClick("카카오 오픈채팅 상담", "신청폼")
-          trackMetaLead({ source: "kakao" })
-        }}
+        onClick={handleKakaoClick}
       >
         <span aria-hidden>💬</span>
         카카오 오픈채팅 상담

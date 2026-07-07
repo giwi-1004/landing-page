@@ -12,6 +12,7 @@ export async function submitLandingLead(
   name: string,
   phoneInput: string,
   agreed: boolean,
+  metaEventId?: string,
 ): Promise<SubmitLeadResult> {
   const trimmedName = name.trim()
   const trimmedPhone = phoneInput.trim()
@@ -39,6 +40,7 @@ export async function submitLandingLead(
         name: trimmedName,
         phone: phoneStored,
         agreed: true,
+        ...(metaEventId ? { metaEventId } : {}),
       }),
     })
 

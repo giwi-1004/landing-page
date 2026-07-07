@@ -1,6 +1,7 @@
 "use client"
 
 import { META_PIXEL_ID } from "@/lib/fbPixelId"
+import { createLeadEventId } from "@/lib/meta/lead-event-id"
 
 export { META_PIXEL_ID }
 
@@ -21,14 +22,8 @@ declare global {
   }
 }
 
-function createLeadEventId(): string {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `lead_${crypto.randomUUID()}`
-  }
-  return `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`
-}
-
 export function trackMetaLead(options?: {
+  eventID?: string
   userData?: MetaPixelUserData
   source?: string
 }) {
@@ -36,7 +31,7 @@ export function trackMetaLead(options?: {
     return
   }
 
-  const eventID = createLeadEventId()
+  const eventID = options?.eventID ?? createLeadEventId()
   const userData = options?.userData
 
   const matchedParams: Record<string, string> = {}

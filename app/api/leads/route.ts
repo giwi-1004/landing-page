@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 
+import { sendMetaCapiLead } from "@/lib/meta/send-capi-lead"
 import {
   formatKoreanPhoneForStorage,
   normalizeKoreanPhoneToDigits,
@@ -9,6 +10,16 @@ import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin"
 
 const CONFIG_HINT_DEV =
   "Supabase 환경 변수가 없습니다. 프로젝트 루트에 .env.local 을 만들고 SUPABASE_SERVICE_ROLE_KEY 와 SUPABASE_URL(또는 NEXT_PUBLIC_SUPABASE_URL)을 넣은 뒤 개발 서버를 다시 시작하세요."
+
+function getClientIp(request: Request): string | undefined {
+  const forwarded = request.headers.get("x-forwarded-for")
+  if (forwarded) return forwarded.split(",")[0]?.trim() || undefined
+  return request.headers.get("x-real-ip")?.trim() || undefined
+}
+
+function getEventSourceUrl(request: Request): string | undefined {
+  return request.headers.get("referer")?.trim() || request.headers.get("origin")?.trim() || undefined
+}
 
 export async function POST(request: Request) {
   let body: unknown
@@ -28,6 +39,14 @@ export async function POST(request: Request) {
   const message =
     typeof (body as { message?: unknown }).message === "string"
       ? (body as { message: string }).message.trim()
+      : ""
+  const metaEventId =
+    typeof (body as { metaEventId?: unknown }).metaEventId === "string"
+      ? (body as { metaEventId: string }).metaEventId.trim()
+      : ""
+  const email =
+    typeof (body as { email?: unknown }).email === "string"
+      ? (body as { email: string }).email.trim()
       : ""
 
   if (!name || !phone) {
@@ -95,6 +114,26 @@ export async function POST(request: Request) {
       },
       { status: 500 },
     )
+  }
+
+  if (metaEventId) {
+    try {
+      await sendMetaCapiLead({
+        eventId: metaEventId,
+        eventSourceUrl: getEventSourceUrl(request),
+        clientIpAddress: getClientIp(request),
+        clientUserAgent: request.headers.get("user-agent")?.trim() || undefined,
+        userData: {
+          firstName: name,
+          phone: phoneDigits,
+          ...(email ? { email } : {}),
+        },
+      })
+    } catch (error) {
+      console.error("[meta-capi] Lead isolated error:", { eventId: metaEventId, error })
+    }
+  } else {
+    console.warn("[meta-capi] metaEventId missing — skipping CAPI Lead event")
   }
 
   await notifyConsultationToSlack({

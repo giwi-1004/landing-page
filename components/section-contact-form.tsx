@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { trackCtaClick, trackFormSubmit } from "@/lib/gtag"
+import { createLeadEventId } from "@/lib/meta/lead-event-id"
 import { trackMetaLead } from "@/lib/trackFbLead"
 import { normalizeKoreanPhoneToDigits } from "@/lib/normalize-kr-phone"
 import { submitLandingLead } from "@/lib/submit-landing-lead"
@@ -89,8 +90,9 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
 
     setIsSubmitting(true)
     setDebugInfo(["API 호출 시작"])
+    const leadEventId = createLeadEventId()
     try {
-      const result = await submitLandingLead(name, phone, privacyAgreed)
+      const result = await submitLandingLead(name, phone, privacyAgreed, leadEventId)
       const fbqExists = typeof window.fbq === "function"
 
       if (!result.ok) {
@@ -112,6 +114,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
 
       trackFormSubmit(FORM_NAME)
       trackMetaLead({
+        eventID: leadEventId,
         userData: { fn: name.trim(), ph: phoneDigits },
         source: "form",
       })

@@ -52,7 +52,6 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
   const [formError, setFormError] = useState("")
   const [privacyAgreed, setPrivacyAgreed] = useState(false)
   const [privacyDetailOpen, setPrivacyDetailOpen] = useState(false)
-  const [debugInfo, setDebugInfo] = useState<string[]>([])
 
   const formatPhoneNumber = (value: string) => {
     const numbers = value.replace(/\D/g, "").slice(0, 11)
@@ -89,28 +88,14 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
     trackCtaClick(FORM_SUBMIT_CTA_LABEL, "신청폼")
 
     setIsSubmitting(true)
-    setDebugInfo(["API 호출 시작"])
     const leadEventId = createLeadEventId()
     try {
       const result = await submitLandingLead(name, phone, privacyAgreed, leadEventId)
-      const fbqExists = typeof window.fbq === "function"
 
       if (!result.ok) {
-        setDebugInfo([
-          "API 호출 시작",
-          `API 실패: ${result.message}`,
-          `fbq 존재: ${fbqExists}`,
-          "Lead 전송 안 함",
-        ])
         setFormError(result.message)
         return
       }
-
-      setDebugInfo([
-        "API 호출 시작",
-        "API 성공",
-        `fbq 존재: ${fbqExists}`,
-      ])
 
       trackFormSubmit(FORM_NAME)
       trackMetaLead({
@@ -119,12 +104,6 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         source: "form",
       })
 
-      setDebugInfo([
-        "API 호출 시작",
-        "API 성공",
-        `fbq 존재: ${fbqExists}`,
-        "Lead 전송 시도함",
-      ])
       onSubmit()
     } finally {
       setIsSubmitting(false)
@@ -155,15 +134,6 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
 
   return (
     <section id="contact-form" className="landing-section landing-section-white">
-      {/* TODO: remove after mobile debug */}
-      {debugInfo.length > 0 ? (
-        <div className="fixed bottom-4 right-4 z-[9999] max-w-[280px] rounded bg-black p-2 text-[12px] leading-relaxed break-keep text-white">
-          {debugInfo.map((line, i) => (
-            <div key={i}>{line}</div>
-          ))}
-        </div>
-      ) : null}
-
       <h2 className="mb-1 break-keep text-[20px] font-bold leading-[1.8] text-[#0F3460]">무료 보험 분석 신청</h2>
       <p className="mb-4 text-xs text-[#888888]">부담 없이 신청하세요. 가입 권유 없습니다.</p>
 

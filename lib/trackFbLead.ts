@@ -39,7 +39,7 @@ export function trackMetaLead(options?: {
   if (userData?.ph?.trim()) matchedParams.ph = userData.ph.trim()
   if (userData?.em?.trim()) matchedParams.em = userData.em.trim()
 
-  window.fbq("track", "Lead", matchedParams, { eventID })
+  window.fbq("track", "CompleteRegistration", matchedParams, { eventID })
 
   console.log("[fb-lead] tracked", {
     eventID,

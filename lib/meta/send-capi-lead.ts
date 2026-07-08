@@ -57,7 +57,7 @@ export async function sendMetaCapiLead(payload: MetaCapiLeadPayload): Promise<bo
   }
 
   const eventData: Record<string, unknown> = {
-    event_name: "Lead",
+    event_name: "CompleteRegistration",
     event_time: Math.floor(Date.now() / 1000),
     event_id: payload.eventId,
     action_source: "website",

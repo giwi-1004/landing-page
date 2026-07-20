@@ -35,12 +35,12 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
           입력하신 번호로 담당 설계사가 24시간 내 연락드립니다
         </p>
 
-        <div className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#f8f9fa] px-5 py-4">
-          <span className="shrink-0 text-base leading-none text-slate-600" aria-hidden>
-            🕐
-          </span>
-          <p className="text-sm font-medium leading-snug text-slate-700">
-            평일 9시~18시 · 주말은 월요일 순서대로
+        <div className="mb-6 w-full rounded-xl bg-[#dcfce7] px-5 py-4 text-center">
+          <p className="text-sm font-bold leading-snug text-slate-900">
+            평일 9시~18시
+          </p>
+          <p className="mt-1 text-xs font-medium leading-snug text-slate-600">
+            주말은 월요일에 신청 순서대로 진행합니다
           </p>
         </div>
 

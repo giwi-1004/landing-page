@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { ChevronDown } from "lucide-react"
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -14,12 +15,23 @@ import { cn } from "@/lib/utils"
 const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/scS4vMoi"
 const FORM_SUBMIT_CTA_LABEL = "내 보험 확인 신청하기"
 const FORM_NAME = "순환계_상담신청"
+const PREFERRED_TIME_PLACEHOLDER = "희망 상담시간 선택하기"
 
 const PREFERRED_TIME_OPTIONS = [
-  "오전 (9-12시)",
-  "오후 (12-6시)",
-  "저녁 (6-9시)",
   "아무 때나 괜찮아요",
+  "오전 9시",
+  "오전 10시",
+  "오전 11시",
+  "오후 12시",
+  "오후 1시",
+  "오후 2시",
+  "오후 3시",
+  "오후 4시",
+  "오후 5시",
+  "오후 6시",
+  "오후 7시",
+  "오후 8시",
+  "오후 9시",
 ] as const
 
 type PreferredTime = (typeof PREFERRED_TIME_OPTIONS)[number] | ""
@@ -51,7 +63,7 @@ const PRIVACY_CONSENT_FULL_TEXT = `개인정보 수집 및 이용 동의
 사용되지 않습니다.`
 
 interface SectionContactFormProps {
-  onSubmit: () => void
+  onSubmit: (preferredTime?: string) => void
 }
 
 export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
@@ -120,7 +132,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         source: "form",
       })
 
-      onSubmit()
+      onSubmit(preferredTime || undefined)
     } finally {
       setIsSubmitting(false)
     }
@@ -220,34 +232,37 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
           </div>
 
           <div>
-            <p className="mb-2.5 block text-sm font-semibold text-navy">
-              희망 상담시간 (선택)
-            </p>
-            <div
-              className="grid grid-cols-2 gap-2"
-              role="radiogroup"
-              aria-label="희망 상담시간"
+            <label
+              htmlFor="preferred-time"
+              className="mb-2.5 block text-sm font-semibold text-navy"
             >
-              {PREFERRED_TIME_OPTIONS.map((option) => {
-                const isSelected = preferredTime === option
-                return (
-                  <button
-                    key={option}
-                    type="button"
-                    role="radio"
-                    aria-checked={isSelected}
-                    onClick={() => setPreferredTime(option)}
-                    className={cn(
-                      "flex h-full min-h-[48px] items-center justify-center rounded-xl border-[1.5px] px-2 py-3 text-center text-[13px] font-semibold transition-colors",
-                      isSelected
-                        ? "border-[#1D9E75] bg-[#1D9E75] text-white"
-                        : "border-[#C4CBD4] bg-white text-[#4A5568] hover:border-[#1D9E75]/40",
-                    )}
-                  >
+              희망 상담시간 (선택)
+            </label>
+            <div className="relative">
+              <select
+                id="preferred-time"
+                value={preferredTime}
+                onChange={(e) => {
+                  setPreferredTime(e.target.value as PreferredTime)
+                }}
+                className={cn(
+                  inputClassName,
+                  "cursor-pointer appearance-none bg-white pr-11",
+                  !preferredTime && "text-gray-500",
+                )}
+                aria-label="희망 상담시간"
+              >
+                <option value="">{PREFERRED_TIME_PLACEHOLDER}</option>
+                {PREFERRED_TIME_OPTIONS.map((option) => (
+                  <option key={option} value={option} className="min-h-10 text-slate-900">
                     {option}
-                  </button>
-                )
-              })}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 right-3 size-5 -translate-y-1/2 text-slate-500"
+              />
             </div>
           </div>
         </div>

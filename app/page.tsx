@@ -14,6 +14,7 @@ import { SiteFooter } from "@/components/site-footer"
 
 export default function LandingPage() {
   const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [submittedPreferredTime, setSubmittedPreferredTime] = useState<string | null>(null)
 
   return (
     <main className="landing-page mx-auto min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8F9FA] md:max-w-[480px]">
@@ -23,12 +24,21 @@ export default function LandingPage() {
       <SectionGuide />
       <SectionPlan />
       <SectionSuccess />
-      <SectionContactForm onSubmit={() => setShowSuccessModal(true)} />
+      <SectionContactForm
+        onSubmit={(preferredTime) => {
+          setSubmittedPreferredTime(preferredTime || null)
+          setShowSuccessModal(true)
+        }}
+      />
       <SiteFooter />
 
       <SuccessModal
         isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
+        preferredTime={submittedPreferredTime}
+        onClose={() => {
+          setShowSuccessModal(false)
+          setSubmittedPreferredTime(null)
+        }}
       />
     </main>
   )

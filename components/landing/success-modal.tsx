@@ -1,11 +1,22 @@
 "use client"
 
+const ANYTIME_OPTION = "아무 때나 괜찮아요"
+
 interface SuccessModalProps {
   isOpen: boolean
   onClose: () => void
+  preferredTime?: string | null
 }
 
-export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
+function getContactGuideMessage(preferredTime?: string | null): string {
+  const trimmed = preferredTime?.trim() || ""
+  if (!trimmed || trimmed === ANYTIME_OPTION) {
+    return "입력하신 번호로 담당 설계사가 24시간 내 연락드립니다"
+  }
+  return `${trimmed}에 맞춰 담당 설계사가 연락드립니다`
+}
+
+export function SuccessModal({ isOpen, onClose, preferredTime }: SuccessModalProps) {
   if (!isOpen) return null
 
   return (
@@ -31,16 +42,16 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
           소중한 신청 감사드립니다
         </p>
 
-        <p className="mb-3 text-base font-medium leading-relaxed text-slate-900">
-          입력하신 번호로 담당 설계사가 24시간 내 연락드립니다
+        <p className="mb-3 break-keep text-base font-medium leading-relaxed text-slate-900">
+          {getContactGuideMessage(preferredTime)}
         </p>
 
         <div className="mb-6 w-full rounded-xl bg-[#dcfce7] px-5 py-4 text-center">
-          <p className="text-sm font-bold leading-snug text-slate-900">
+          <p className="break-keep text-sm font-bold leading-snug text-slate-900">
             평일 9시~18시
           </p>
-          <p className="mt-1 text-xs font-medium leading-snug text-slate-600">
-            주말은 월요일에 신청 순서대로 진행합니다
+          <p className="mt-1 break-keep text-xs font-medium leading-snug text-slate-600">
+            주말·공휴일은 다음 영업일 순서대로
           </p>
         </div>
 

@@ -48,10 +48,7 @@ export function SuccessModal({ isOpen, onClose, preferredTime }: SuccessModalPro
 
         <div className="mb-6 w-full rounded-xl bg-[#dcfce7] px-5 py-4 text-center">
           <p className="break-keep text-sm font-bold leading-snug text-slate-900">
-            평일 9시~18시
-          </p>
-          <p className="mt-1 break-keep text-xs font-medium leading-snug text-slate-600">
-            주말·공휴일은 다음 영업일 순서대로
+            평일 9시~18시 · 주말·공휴일은 다음 영업일 순서대로
           </p>
         </div>
 

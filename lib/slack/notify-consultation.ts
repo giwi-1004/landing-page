@@ -2,6 +2,7 @@ export type ConsultationSlackPayload = {
   name: string
   phone: string
   message?: string
+  preferredTime?: string | null
 }
 
 const DEFAULT_INQUIRY_MESSAGE = "무료 보험 분석 · 전화 상담 신청"
@@ -14,13 +15,15 @@ function getSlackWebhookUrl(): string {
   )
 }
 
-function buildSlackText({ name, phone, message }: ConsultationSlackPayload): string {
+function buildSlackText({ name, phone, message, preferredTime }: ConsultationSlackPayload): string {
   const inquiry = message?.trim() || DEFAULT_INQUIRY_MESSAGE
+  const preferredTimeLabel = preferredTime?.trim() || "미선택"
 
   return [
     "🚨 [신규 상담 신청 접수]",
     `• 고객명: ${name}`,
     `• 연락처: ${phone}`,
+    `• 희망 상담시간: ${preferredTimeLabel}`,
     `• 문의내용: ${inquiry}`,
   ].join("\n")
 }

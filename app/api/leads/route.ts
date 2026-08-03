@@ -74,6 +74,11 @@ export async function POST(request: Request) {
     typeof (body as { source?: unknown }).source === "string"
       ? (body as { source: string }).source.trim()
       : "form"
+  const preferredTimeRaw = (body as { preferred_time?: unknown }).preferred_time
+  const preferredTime =
+    typeof preferredTimeRaw === "string" && preferredTimeRaw.trim()
+      ? preferredTimeRaw.trim()
+      : null
 
   if (source === "kakao") {
     if (!metaEventId) {
@@ -191,6 +196,7 @@ export async function POST(request: Request) {
     name,
     phone: phoneStored,
     agreed: true,
+    preferred_time: preferredTime,
   })
 
   if (error) {
@@ -220,6 +226,7 @@ export async function POST(request: Request) {
     name,
     phone: phoneStored,
     message: message || undefined,
+    preferredTime,
   })
 
   return NextResponse.json({ ok: true }, { status: 201 })

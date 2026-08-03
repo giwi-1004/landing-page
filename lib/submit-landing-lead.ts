@@ -51,9 +51,11 @@ export async function submitLandingLead(
   phoneInput: string,
   agreed: boolean,
   metaEventId?: string,
+  preferredTime?: string,
 ): Promise<SubmitLeadResult> {
   const trimmedName = name.trim()
   const trimmedPhone = phoneInput.trim()
+  const trimmedPreferredTime = preferredTime?.trim() || ""
 
   if (!trimmedName || !trimmedPhone) {
     return { ok: false, message: "이름과 전화번호를 입력해주세요." }
@@ -75,6 +77,7 @@ export async function submitLandingLead(
     phone: phoneStored,
     agreed: true,
     source: "form",
+    preferred_time: trimmedPreferredTime || null,
     ...(metaEventId ? { metaEventId } : {}),
   })
 }

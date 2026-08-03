@@ -12,8 +12,17 @@ import { submitKakaoLead, submitLandingLead } from "@/lib/submit-landing-lead"
 import { cn } from "@/lib/utils"
 
 const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/scS4vMoi"
-const FORM_SUBMIT_CTA_LABEL = "전화 상담 신청"
+const FORM_SUBMIT_CTA_LABEL = "내 보험 확인 신청하기"
 const FORM_NAME = "순환계_상담신청"
+
+const PREFERRED_TIME_OPTIONS = [
+  "오전 (9-12시)",
+  "오후 (12-6시)",
+  "저녁 (6-9시)",
+  "아무 때나 괜찮아요",
+] as const
+
+type PreferredTime = (typeof PREFERRED_TIME_OPTIONS)[number] | ""
 
 const PRIVACY_CONSENT_FULL_TEXT = `개인정보 수집 및 이용 동의
 
@@ -48,6 +57,7 @@ interface SectionContactFormProps {
 export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
+  const [preferredTime, setPreferredTime] = useState<PreferredTime>("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formError, setFormError] = useState("")
   const [privacyAgreed, setPrivacyAgreed] = useState(false)
@@ -90,7 +100,13 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
     setIsSubmitting(true)
     const leadEventId = createLeadEventId()
     try {
-      const result = await submitLandingLead(name, phone, privacyAgreed, leadEventId)
+      const result = await submitLandingLead(
+        name,
+        phone,
+        privacyAgreed,
+        leadEventId,
+        preferredTime || undefined,
+      )
 
       if (!result.ok) {
         setFormError(result.message)
@@ -117,7 +133,7 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
     link.dataset.kakaoSubmitting = "true"
 
     try {
-      trackCtaClick("카카오 오픈채팅 상담", "신청폼")
+      trackCtaClick("눌러서 카카오톡으로 상담받기", "신청폼")
 
       const leadEventId = createLeadEventId()
       await submitKakaoLead(leadEventId).catch(() => null)
@@ -145,75 +161,123 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         onClick={handleKakaoClick}
       >
         <span aria-hidden>💬</span>
-        카카오 오픈채팅 상담
+        눌러서 카카오톡으로 상담받기
       </a>
 
       <p className="my-3 text-center text-[#AAAAAA]">또는</p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="mb-4">
-          <label htmlFor="name" className="mb-2.5 block text-sm font-semibold text-navy">
-            이름
-          </label>
-          <Input
-            id="name"
-            type="text"
-            placeholder="이름을 입력해주세요"
-            value={name}
-            required
-            onChange={(e) => {
-              setFormError("")
-              setName(e.target.value)
-            }}
-            className={inputClassName}
-          />
+      <div className="mb-4 text-center">
+        <div className="mx-auto w-fit rounded-lg bg-[#FFF1E0] px-4 py-2.5 text-center leading-[1.5] text-[#E8651A]">
+          <p className="text-[15px] font-bold">가입 권유 전화 아니에요</p>
+          <p className="text-[13px] font-normal text-[#D97A3D]">
+            신청 확인차 편하신 시간에 연락드립니다
+          </p>
         </div>
+      </div>
 
-        <div className="mb-4">
-          <label htmlFor="phone" className="mb-2.5 block text-sm font-semibold text-navy">
-            전화번호
-          </label>
-          <Input
-            id="phone"
-            type="tel"
-            placeholder="010-0000-0000"
-            value={phone}
-            required
-            onChange={(e) => {
-              setFormError("")
-              setPhone(formatPhoneNumber(e.target.value))
-            }}
-            className={inputClassName}
-            maxLength={13}
-            inputMode="tel"
-            autoComplete="tel"
-            pattern="010-\d{4}-\d{4}"
-          />
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <div className="mb-4 rounded-xl border-0 bg-[#EEF1F4] px-3 py-4">
+          <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+            <div>
+              <label htmlFor="name" className="mb-2.5 block text-sm font-semibold text-navy">
+                이름
+              </label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="이름을 입력해주세요"
+                value={name}
+                required
+                onChange={(e) => {
+                  setFormError("")
+                  setName(e.target.value)
+                }}
+                className={inputClassName}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="mb-2.5 block text-sm font-semibold text-navy">
+                전화번호
+              </label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="010-0000-0000"
+                value={phone}
+                required
+                onChange={(e) => {
+                  setFormError("")
+                  setPhone(formatPhoneNumber(e.target.value))
+                }}
+                className={inputClassName}
+                maxLength={13}
+                inputMode="tel"
+                autoComplete="tel"
+                pattern="010-\d{4}-\d{4}"
+              />
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2.5 block text-sm font-semibold text-navy">
+              희망 상담시간 (선택)
+            </p>
+            <div
+              className="grid grid-cols-2 gap-2"
+              role="radiogroup"
+              aria-label="희망 상담시간"
+            >
+              {PREFERRED_TIME_OPTIONS.map((option) => {
+                const isSelected = preferredTime === option
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    onClick={() => setPreferredTime(option)}
+                    className={cn(
+                      "flex h-full min-h-[48px] items-center justify-center rounded-xl border-[1.5px] px-2 py-3 text-center text-[13px] font-semibold transition-colors",
+                      isSelected
+                        ? "border-[#1D9E75] bg-[#1D9E75] text-white"
+                        : "border-[#C4CBD4] bg-white text-[#4A5568] hover:border-[#1D9E75]/40",
+                    )}
+                  >
+                    {option}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="mb-4 rounded-xl border-2 border-[#e2e8f0] bg-surface px-3 py-4">
-          <div className="flex flex-col gap-2">
-            <label className="flex min-w-0 cursor-pointer items-center gap-2">
-              <Checkbox
-                id="privacy-consent"
-                checked={privacyAgreed}
-                onCheckedChange={(v) => {
-                  setFormError("")
-                  setPrivacyAgreed(v === true)
-                }}
-                className="size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
-              />
-              <span className="text-[13px] font-semibold leading-none text-slate-900">
+          <div className="flex items-start gap-2">
+            <Checkbox
+              id="privacy-consent"
+              checked={privacyAgreed}
+              onCheckedChange={(v) => {
+                setFormError("")
+                setPrivacyAgreed(v === true)
+              }}
+              className="mt-0.5 size-6 shrink-0 rounded-md border-2 border-[#e2e8f0] data-[state=checked]:border-[#0f3460] data-[state=checked]:bg-[#0f3460] [&_svg]:size-4"
+            />
+            <div className="flex min-w-0 flex-col">
+              <label
+                htmlFor="privacy-consent"
+                className="cursor-pointer text-[13px] font-semibold leading-none text-slate-900"
+              >
                 [필수] 개인정보 수집 및 이용 동의
-              </span>
-            </label>
-            <button
-              type="button"
-              className="ml-8 w-fit border-0 bg-transparent p-0 text-[12px] font-medium text-slate-700 underline"
-              onClick={() => setPrivacyDetailOpen((open) => !open)}
-            >
-              내용 보기
-            </button>
+              </label>
+              <button
+                type="button"
+                className="mt-1 block w-fit border-0 bg-transparent p-0 text-left text-[12px] font-medium text-slate-700 underline"
+                onClick={() => setPrivacyDetailOpen((open) => !open)}
+              >
+                {privacyDetailOpen ? "내용 닫기" : "내용 보기"}
+              </button>
+            </div>
           </div>
 
           <div
@@ -239,11 +303,9 @@ export function SectionContactForm({ onSubmit }: SectionContactFormProps) {
         >
           {isSubmitting ? "요청 중..." : FORM_SUBMIT_CTA_LABEL}
         </button>
-        {!privacyAgreed ? (
-          <p className="mt-2 text-center text-xs text-[#0F3460]/50">
-            개인정보 수집 및 이용에 동의해야 신청할 수 있습니다.
-          </p>
-        ) : null}
+        <p className="mt-3 text-center text-xs text-[#888888]">
+          개인정보 수집 및 이용에 동의해야 신청할 수 있습니다.
+        </p>
       </form>
     </section>
   )

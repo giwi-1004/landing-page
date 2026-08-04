@@ -6,7 +6,7 @@ export function SiteFooter() {
       </p>
       <div className="border-t border-white/10 pt-4">
         <p className="text-left text-xs leading-relaxed text-white/60">
-          본 광고는 금융광고 심의 기준을 준수합니다
+          본 광고는 특정 상품 소개가 아닌 무료 보험 분석 상담 안내입니다
           <br />
           보험계약 체결 전 약관 및 설명서를 반드시 확인하세요
         </p>

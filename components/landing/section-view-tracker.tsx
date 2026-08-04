@@ -34,7 +34,7 @@ export function SectionViewTracker() {
             observer.disconnect()
           }
         },
-        { threshold: 0.3 },
+        { threshold: 0 },
       )
 
       observer.observe(el)
